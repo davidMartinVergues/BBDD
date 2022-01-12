@@ -137,6 +137,8 @@ Tras la instalación, Postgres se configura para usar la autenticación ident. E
 
 El procedimiento de instalación creó en linux una cuenta de usuario llamada postgres, que se asocia con el rol predeterminado de Postgres. Para usar Postgres, puede iniciar sesión en esa cuenta.
 
+para listar los users en linux podemos usar el comando `less /etc/passwd` y veremos cómo aparece, abajo de todo, el user postgtre
+
 ```
 david@david-neon ~ ❯ sudo -i -u postgres
 ```
