@@ -1,6 +1,6 @@
 - [Curso de base de datos](#curso-de-base-de-datos)
   - [DBMS - Database management system](#dbms---database-management-system)
-  - [RDBMS](#rdbms)
+  - [RDBMS -Relational database management system](#rdbms--relational-database-management-system)
   - [Relational Data Base - RDB](#relational-data-base---rdb)
 - [Diagramas entidad-relación](#diagramas-entidad-relación)
 - [Diagramas UML (Unified Modeling Language)](#diagramas-uml-unified-modeling-language)
@@ -31,7 +31,7 @@ Significa "Sistema de gestión de bases de datos". En resumen, un DBMS es un pro
 
 Algunos ejemplos de DBMS incluyen MySQL, PostgreSQL, Microsoft Access, SQL Server, FileMaker, Oracle, RDBMS, dBASE, Clipper y FoxPro. Dado que hay tantos sistemas de gestión de bases de datos disponibles, es importante que haya una manera de comunicarse entre ellos. Por esta razón, la mayoría del software de base de datos viene con una conectividad de base de datos abierta (ODBC) controlador que permite que la base de datos se integre con otras bases de datos. Por ejemplo, las instrucciones SQL comunes como SELECT e INSERT se traducen de la sintaxis patentada de un programa a una sintaxis que otras bases de datos pueden entender.
 
-## RDBMS
+## RDBMS -Relational database management system
 
 Significa "Sistema de gestión de bases de datos relacionales". Un RDBMS es un DBMS diseñado específicamente para bases de datos relacionales. Por lo tanto, los RDBMS son un subconjunto de DBMS.
 
