@@ -11,9 +11,9 @@
   - [Creación de un nuevo rol](#creación-de-un-nuevo-rol)
   - [Iniciar sesión en el servidor postgres](#iniciar-sesión-en-el-servidor-postgres)
   - [Creación de una nueva bbdd](#creación-de-una-nueva-bbdd)
-    - [usando CREATE DATABASE](#usando-create-database)
+  - [- ### usando CREATE DATABASE](#---usando-create-database)
       - [**CREATE DATABASE Parameters**](#create-database-parameters)
-    - [usando createdb](#usando-createdb)
+  - [- ### CREATEDB](#---createdb)
       - [**createdb Command Line Arguments**](#createdb-command-line-arguments)
   - [Creación de una tabla - consultas básicas](#creación-de-una-tabla---consultas-básicas)
   - [PostgreSQL Data Types](#postgresql-data-types)
@@ -131,7 +131,7 @@ sudo apt install postgresql postgresql-contrib
 
 ```
 
-Por defecto, Postgres utiliza un concepto llamado “roles” para gestionar la autenticación y la autorización. Estos son, en algunos aspectos, parecidos a las cuentas normales de estilo Unix, pero Postgres no distingue entre los usuarios y los grupos, y en su lugar prefiere el término más flexible de “rol”.
+Por defecto, Postgres utiliza un concepto llamado “roles” para gestionar la autenticación y la autorización. Estos son, en algunos aspectos, parecidos a las cuentas normales de estilo Unix, pero Postgres no distingue entre los usuarios y los grupos, y en su lugar prefiere el término más flexible de “role”.
 
 Tras la instalación, Postgres se configura para usar la autenticación ident. Esto significa que asocia los roles de Postgres con una cuenta de sistema Unix o Linux correspondiente. Si existe un rol dentro de Postgres, un nombre de usuario de Unix o Linux con el mismo nombre puede iniciar sesión ocupando ese rol.
 
@@ -290,11 +290,11 @@ host - que hace referencia a las conexiones usando protocolo TCP/IP (mediante SS
 local- conexiones usando Unix-domain sockets
 
 Entonces la primera línea marca que las conexiones host que vengan de la addres 127.0.0.1/32 se pueden conectar todos los users a todas las bbdd con una autenticación md5.
-Podemos poner `trust` que a este tipo de conexiones no les pediria password o reject para cloquearlas.
+Podemos poner `trust` que a este tipo de conexiones no les pediria password o reject para bloquearlas.
 
 3. pg_indent.conf
 
-Nos permite mapear users. Permite asociar un usuario de nuestro SSOO a un rolque hayamos creado en postgres
+Nos permite mapear users. Permite asociar un usuario de nuestro SSOO a un role que hayamos creado en postgres
 
 ```
 # MAPNAME       SYSTEM-USERNAME         PG-USERNAME
@@ -415,7 +415,8 @@ De manera predeterminada PostgreSQL no crea bases de datos para usar, debemos cr
 
 Hay dos maneras de crear una bbdd en postgres.
 
-### usando CREATE DATABASE
+- ### CREATE DATABASE
+---
 
 Es una sentencia SQL así que la debemos ejecutar dentro del servidor.
 
@@ -473,7 +474,8 @@ CREATE DATABASE example_db WITH OWNER='david' ENCODING='UTF8';
 
 ```
 
-### usando createdb
+- ### CREATEDB
+---
 
 La única diferencia respecto a `CREATE DATABASE` es que createdb se ejecuta fuera del servidor de postgres, es decir desde el prompt de linux y que podemos añadir un comentario asociado a la bbdd.
 
@@ -557,7 +559,7 @@ INSERT INTO tren( modelo, capacidad ) VALUES (‘Volvo 1’, 100);
 y consultanmos los registros de la tabla
 
 ```sql
-INSERT INTO tren( modelo, capacidad ) VALUES ('Volvo 1', 100);
+select * from tren;
 ```
 
 si queremos modificar algún valor del registro entrado
@@ -618,32 +620,109 @@ Pero también tiene unos data types propios como:
 
 ## Comando psql - back slash
 
-- \? - me mostrará manual para todos los comandos
-- \c nombreBBDD - para cambiar a otra bbdd
-- \dt - listar las tablas de la bbdd
-- \d <nombreTabla> - nos da una descripción de la tabla
-- \dn - listar los esquemas de la bbdd actual
-- \df - listar las funciones disponibles de la bbdd actual
-- \dv - listar las vistas
-- \du - lista todos los roles de la bbdd
-- \e - Permite abrir un editor de texto plano, escribir comandos y ejecutar en lote. \e abre el editor de texto, escribir allí todos los comandos, luego guardar los cambios y cerrar, al cerrar se ejecutarán todos los comandos guardados.
-- \ef - Equivalente al comando anterior pero permite editar también funciones en PostgreSQL
-- \g - vuelves a ejecutar el último comando ejecutado en la consola de postgres
-- \g - volver a ejecutar el último comando
-- \h - conjunto de comandos SQL (\h ALTER y nos da info del comando ALTER)
-- \i <nombreArchivo> - ejecutamos comandos desde un archivo
-- \l - listar todas la bbdd instaladas en postgres siempre hay instaladas como mínimo 3 (postgres, template0,template1)
-- \password <nombreUser> - cambiar el password de un user
-- \q - salir de psql
-- \s - ver historial de los últimos comandos ejecutados
-- \s <nombreArchivo> - nos guarda los últimos comandos en un archivo
-- \timing - activamos el counter y en cada consulta nos dirá cuanto tarda en realizarse
+- `\? `- me mostrará manual para todos los comandos
+- `\c `nombreBBDD - para cambiar a otra bbdd
+- `\dt` - listar las tablas de la bbdd
+- `\d `<nombreTabla> - nos da una descripción de la tabla
+- `\dn` - listar los esquemas de la bbdd actual
+- `\df` - listar las funciones disponibles de la bbdd actual
+- `\dv` - listar las vistas
+- `\du` - lista todos los roles de la bbdd
+- `\e `- Permite abrir un editor de texto plano, escribir comandos y ejecutar en lote. \e abre el editor de texto, escribir allí todos los comandos, luego guardar los cambios y cerrar, al cerrar se ejecutarán todos los comandos guardados.
+- `\ef` - Equivalente al comando anterior pero permite editar también funciones en PostgreSQL
+- `\g `- vuelves a ejecutar el último comando ejecutado en la consola de postgres
+- `\g `- volver a ejecutar el último comando
+- `\h `- conjunto de comandos SQL (`\h `ALTER y nos da info del comando ALTER)
+- `\i `<nombreArchivo> - ejecutamos comandos desde un archivo
+- `\l `- listar todas la bbdd instaladas en postgres siempre hay instaladas como mínimo 3 (postgres, template0,template1)
+- `\password <nombreUser>` - cambiar el password de un user
+- `\q `- salir de psql
+- `\s `- ver historial de los últimos comandos ejecutados
+- `\s <nombreArchivo>` - nos guarda los últimos comandos en un archivo
+- `\timing` - activamos el counter y en cada consulta nos dirá cuanto tarda en realizarse
 
 ## comandos SQL
 
 - show config_file; - nos da la ruta al archivo de config de postgres
 - select version(); - nos dice la versión de postgres que estamos utilizando
--
+
+1. 
+
+```sql
+mysql -u NombreUsuario -p
+-- loguearme en mysql
+```
+1. 
+
+```sql
+SHOW DATABASES; 
+```
+
+3.  
+```sql
+SELECT * FROM mysql.user;
+-- nos da todos los usuarios en mysql
+```
+
+4.    
+```sql
+SELECT USER();
+-- Me muestra el usuario con el que estoy logueado en `mysql`
+```
+5.
+```sql
+SELECT DATABASE();
+-- Me muestra con qué bbdd estoy trabajando
+```
+1. 
+```sql
+SHOW VARIABLES WHERE Variable_name = 'port';
+SHOW GLOBAL VARIABLES LIKE 'PORT'
+-- muestra el puerto en el que trabaja mysql
+```
+7. 
+
+```sql
+SHOW VARIABLES WHERE Variable_name = 'hostname';
+-- nombre del opdenador con el q estás conectado a mysql (pej david-pc)
+```
+8. 
+```sql
+CREATE DATABASE miprueba;
+-- crear un nuevo schema o base de datos
+```
+9. 
+```sql
+use miprueba;
+-- para usar una bbdd concreta
+```
+10. 
+```sql
+CREATE TABLE prueba (id_prueba int)
+--crear nueva tabla
+```
+11.  
+
+```sql
+SHOW tables;
+-- mostrar las tablas
+```
+12.  
+```sql
+describe prueba;
+-- obtener info de una tabla concreta
+```
+13. 
+```sql
+SELECT * from `node-app`.products;
+-- hacer una consulta especificando la bbdd o schema + tabla con notación de punto, la bbdd va entre tildes  ` `
+```
+14. 
+```sql
+use `node-app`;
+-- para fijar antes del script de SQL q usaremos la bbdd `node-app` tb entre ``
+```
+
 
 # Anexo
 
